@@ -1,0 +1,121 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/03/a/Register.hdl
+
+/**
+ * 16-bit register:
+ * If load[t] == 1 then out[t+1] = in[t]
+ * else out does not change
+ */
+
+CHIP Register {
+    IN in[16], load;
+    OUT out[16];
+
+    PARTS:
+    // Put your code here:
+   /*Bit(in=in[0], load=load, out=out[0]);
+    Bit(in=in[1], load=load, out=out[1]);
+    Bit(in=in[2], load=load, out=out[2]);
+    Bit(in=in[3], load=load, out=out[3]);
+    Bit(in=in[4], load=load, out=out[4]);
+    Bit(in=in[5], load=load, out=out[5]);
+    Bit(in=in[6], load=load, out=out[6]);
+    Bit(in=in[7], load=load, out=out[7]);
+    Bit(in=in[8], load=load, out=out[8]);
+    Bit(in=in[9], load=load, out=out[9]);
+    Bit(in=in[10], load=load, out=out[10]);
+    Bit(in=in[11], load=load, out=out[11]);
+    Bit(in=in[12], load=load, out=out[12]);
+    Bit(in=in[13], load=load, out=out[13]);
+    Bit(in=in[14], load=load, out=out[14]);
+    Bit(in=in[15], load=load, out=out[15]);*/
+
+    // for bit: Mux(a=x1, b=in, sel=load, out=y1);
+
+//////////REGISTER USING NAND GATES///////////
+
+    Nand(a=load, b=load, out=A);
+    Nand(a=d, b=A, out=A1);
+    Nand(a=load, b=in[0], out=B1);
+    Nand(a=A1, b=B1, out=C0);
+DFF(in=C0,out=d,out=out[0]);
+
+    Nand(a=d1, b=A, out=A2);
+    Nand(a=load, b=in[1], out=B2);
+    Nand(a=A2, b=B2, out=C1);
+DFF(in=C1,out=d1,out=out[1]);
+
+    Nand(a=d2, b=A, out=A3);
+    Nand(a=load, b=in[2], out=B3);
+    Nand(a=A3, b=B3, out=C2);
+DFF(in=C2,out=d2,out=out[2]);
+
+    Nand(a=d3, b=A, out=A4);
+    Nand(a=load, b=in[3], out=B4);
+    Nand(a=A4, b=B4, out=C3);
+DFF(in=C3,out=d3,out=out[3]);
+
+    Nand(a=d4, b=A, out=A04);
+    Nand(a=load, b=in[4], out=B04);
+    Nand(a=A04, b=B04, out=C4);
+DFF(in=C4,out=d4,out=out[4]);
+
+    Nand(a=d5, b=A, out=A5);
+    Nand(a=load, b=in[5], out=B5);
+    Nand(a=A5, b=B5, out=C5);
+DFF(in=C5,out=d5,out=out[5]);
+
+    Nand(a=d6, b=A, out=A6);
+    Nand(a=load, b=in[6], out=B6);
+    Nand(a=A6, b=B6, out=C6);
+DFF(in=C6,out=d6,out=out[6]);
+
+    Nand(a=d7, b=A, out=A7);
+    Nand(a=load, b=in[7], out=B7);
+    Nand(a=A7, b=B7, out=C7);
+DFF(in=C7,out=d7,out=out[7]);
+
+    Nand(a=d8, b=A, out=A8);
+    Nand(a=load, b=in[8], out=B8);
+    Nand(a=A8, b=B8, out=C8);
+DFF(in=C8,out=d8,out=out[8]);
+
+    Nand(a=d9, b=A, out=A9);
+    Nand(a=load, b=in[9], out=B9);
+    Nand(a=A9, b=B9, out=C9);
+DFF(in=C9,out=d9,out=out[9]);
+
+    Nand(a=d10, b=A, out=A10);
+    Nand(a=load, b=in[10], out=B10);
+    Nand(a=A10, b=B10, out=C10);
+DFF(in=C10,out=d10,out=out[10]);
+
+    Nand(a=d11, b=A, out=A11);
+    Nand(a=load, b=in[11], out=B11);
+    Nand(a=A11, b=B11, out=C11);
+DFF(in=C11,out=d11,out=out[11]);
+
+    Nand(a=d12, b=A, out=A12);
+    Nand(a=load, b=in[12], out=B12);
+    Nand(a=A12, b=B12, out=C12);
+DFF(in=C12,out=d12,out=out[12]);
+
+    Nand(a=d13, b=A, out=A13);
+    Nand(a=load, b=in[13], out=B13);
+    Nand(a=A13, b=B13, out=C13);
+DFF(in=C13,out=d13,out=out[13]);
+
+    Nand(a=d14, b=A, out=A14);
+    Nand(a=load, b=in[14], out=B14);
+    Nand(a=A14, b=B14, out=C14);
+DFF(in=C14,out=d14,out=out[14]);
+
+    Nand(a=d15, b=A, out=A15);
+    Nand(a=load, b=in[15], out=B15);
+    Nand(a=A15, b=B15, out=C15);
+DFF(in=C15,out=d15,out=out[15]);
+
+    
+}

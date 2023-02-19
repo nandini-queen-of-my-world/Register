@@ -1,0 +1,24 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/03/a/Bit.hdl
+
+/**
+ * 1-bit register:
+ * If load[t] == 1 then out[t+1] = in[t]
+ *                 else out does not change (out[t+1] = out[t])
+ */
+
+CHIP Bit {
+    IN in, load;
+    OUT out;
+
+    PARTS:
+    // Put your code here:
+    // Mux(a=x1, b=in, sel=load, out=y1);
+    Nand(a=in,b=load,out=o1);
+    Nand(a=load,b=load,out=o2);
+    Nand(a=x1,b=o2,out=o3);
+    Nand(a=o1,b=o3,out=y1);
+    DFF(in=y1, out=x1, out=out);
+}
